@@ -23,13 +23,7 @@ public class Account {
 	private UUID account;
 	
 	@Column
-	private String username;
-	
-	@Column
 	private String active;
-	
-	@Column
-	private String password;
 	
 	@Column
 	private String user_role;

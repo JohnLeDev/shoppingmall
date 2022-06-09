@@ -9,8 +9,8 @@ spring:
     password: shopping 
   jpa:
     hibernate:
-      ddl-auto: create-drop
-    generate-ddl: false
+      ddl-auto: validate
+    generate-ddl: true
     show-sql: true
   flyway:
     enabled: true

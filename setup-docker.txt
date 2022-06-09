@@ -1,0 +1,7 @@
+install images postgres
+
++ docker pull postgres
+
+install containter postgres
+ 
++ docker run --name myshop -d -p 2345:5432 -e POSTGRES_PASSWORD=shopping postgres
