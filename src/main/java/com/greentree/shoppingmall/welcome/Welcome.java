@@ -9,7 +9,7 @@ import com.greentree.shoppingmall.common.util.ResponseHelper;
 @RestController
 public class Welcome {
 	
-	@GetMapping()
+	@GetMapping("/welcome")
 	public Object welcome() {
 		return ResponseHelper.getResponse("Welcome to the shopping mall", HttpStatus.OK) ;
 	}

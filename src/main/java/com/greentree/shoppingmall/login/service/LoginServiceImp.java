@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.greentree.shoppingmall.login.dto.LoginDto;
 import com.greentree.shoppingmall.login.dto.SignUpDTO;
+import com.greentree.shoppingmall.login.mapper.LoginMapper;
+import com.greentree.shoppingmall.login.mapper.SignupMapper;
 import com.greentree.shoppingmall.login.model.UserLogin;
 import com.greentree.shoppingmall.login.reponsitory.LoginReponsitory;
 
@@ -24,16 +26,21 @@ public class LoginServiceImp implements LoginService {
 	@Override
 	public String login(LoginDto loginDTO) {
 		// TODO Auto-generated method stub
-		Optional<UserLogin> userOpt = reponsitory.findByUsername(loginDTO.getUsername() );
-		
+	
 		return null;
 	}
 
 
 	@Override
 	public String register(SignUpDTO signupDTO) {
-		
-		return null;
+		Optional<UserLogin> userOpt = reponsitory.findByUsername(signupDTO.getUsername() );
+		if (userOpt.isEmpty()) {
+			return null;
+		}
+		UserLogin model = SignupMapper.INSTANCE.toModel(signupDTO);
+		model.setPassword(encoder.encode(signupDTO.getPassword()));
+		UserLogin dataSave =  reponsitory.save(model);
+		return "oki";
 	}
 
 
